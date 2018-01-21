@@ -6,6 +6,9 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemy;
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
+    public GameObject[] enemypool;
+    public int enemyCount = 0;
+    public int enemyInScene = 5;
 
 
     void Start ()
@@ -16,13 +19,19 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn ()
     {
-        if(playerHealth.currentHealth <= 0f)
-        {
-            return;
-        }
+        this.CreateEnemy();
+    }
 
+    void AddToEnemyPool(GameObject enemy)
+    {
+        enemypool[enemypool.Length] = enemy;
+    }
+
+    void CreateEnemy()
+    {
+        if (this.enemyInScene >= enemyCount) return;
         int spawnPointIndex = Random.Range (0, spawnPoints.Length);
-
         Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        enemyCount += 1;
     }
 }

@@ -42,9 +42,17 @@ public class GameManager : MonoBehaviour {
     {
 
     }
+
     //游戏恢复
     void GameRemue()
     {
 
     }
+
+    //添加一个胜利的规则
+    void AddVectoryRule()
+    {
+
+    }
+
 }
